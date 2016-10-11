@@ -27,15 +27,15 @@ Implement the above user stories with the following constraints at each release:
 ### v1
 
 * Store plaintext passwords in the database
-* Use cookies to store information about who is logged in (not the "session" hash)
+* Use [cookies](http://api.rubyonrails.org/classes/ActionDispatch/Cookies.html) to store information about who is logged in (not the session hash)
 
 ### v2
 
-* Use the session hash to store information about who is logged in. 
+* Use the [session hash](http://guides.rubyonrails.org/action_controller_overview.html#session) to store information about who is logged in. 
 
 ### v3
 
-* Salt and encrypt the user's password upon creation using a one-way encryption algorithm, like BCrypt. Store the salt on the user's record in the database alongside the hashed password. 
+* Salt and encrypt the user's password upon creation using a one-way encryption algorithm, like [BCrypt](https://github.com/codahale/bcrypt-ruby). Store the salt on the user's record in the database alongside the hashed password. 
 * Re-salt and re-encrypt the plaintext password upon login and compare that with the stored hash to verify authenticity.
 
 #### Constraints
