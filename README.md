@@ -43,6 +43,16 @@ Implement the above user stories with the following constraints at each release:
 * Do not use `BCrypt::Password`
 * Use `BCrypt::Engine` (or for an extra challenge, use SCrypt, which is far less documented than BCrypt)
 
+#### Tips
+[Here are the API docs](http://www.rubydoc.info/github/codahale/bcrypt-ruby/BCrypt/Engine) on `BCrypt::Engine`.
+
+The two methods you'll need are:
+
+* `BCrypt::Engine.generate_salt`, and
+* `BCrypt::Engine.hash_secret`
+
+These methods are the same with the [SCrypt gem](http://www.rubydoc.info/github/pbhogan/scrypt/SCrypt/Engine).
+
 ### v4
 
 * Drop your salt column on the users table. 
