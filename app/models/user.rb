@@ -6,12 +6,11 @@ class User < ActiveRecord::Base
 	include BCrypt
 
 	def valid_password?(plaintext_password)
-		BCrypt::Engine.hash_secret(plaintext_password, salt) == password
+		db_password = Password.new(password)
+		db_password == plaintext_password
 	end
 
 	before_validation(on: :create) do
-    salt = BCrypt::Engine.generate_salt
-    self.password = BCrypt::Engine.hash_secret(self.password, salt)
-    self.salt = salt
+		self.password = Password.create(self.password)
   end
 end
