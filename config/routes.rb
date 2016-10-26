@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'login#index'
+  root to: 'task#index'
 
   post '/login', to: 'login#create'
   get '/login', to: 'login#index'
@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'signup#index'
   post '/signup', to: 'signup#create'
 
-  get '/tasks', to: 'task#index'
+  get '/', to: 'task#index'
   post '/tasks', to: 'task#create'
   put '/tasks/:id', to: 'task#update'
 

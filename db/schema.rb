@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20161025203346) do
   create_table "tasks", force: :cascade do |t|
     t.string  "description"
     t.date    "due_date"
-    t.boolean "is_complete"
+    t.boolean "is_complete", default: false
     t.integer "user_id"
   end
 
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20161025203346) do
     t.string "email"
     t.string "password"
     t.string "uuid"
+    t.string "salt"
   end
 
 end

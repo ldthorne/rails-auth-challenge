@@ -10,14 +10,13 @@ class TaskController < ApplicationController
 		user = User.find_by uuid: session[:uuid]
 		due_date = Date.parse(params[:due_date])
 		Task.create!(due_date: due_date, description: params[:description], user_id: user.id)
-		redirect_to '/tasks'
+		redirect_to '/'
 	end
 
 	def update
 		task = Task.find(params[:id])
 		task.is_complete = !task.is_complete
 		task.save!
-		redirect_to '/tasks'
 	end
 
 	private
