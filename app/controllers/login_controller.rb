@@ -5,8 +5,8 @@ class LoginController < ApplicationController
 	def create
 		user = User.find_by email: params[:email], password: params[:password]
 		if user.present?
-			cookies[:email] = user.email
-			cookies[:uuid] = user.uuid
+			session[:uuid] = user.uuid
+			session[:email] = user.email
 			redirect_to '/tasks'
 		else
 			redirect_to '/login'
@@ -14,8 +14,7 @@ class LoginController < ApplicationController
 	end
 
 	def destroy 
-		cookies.delete :email
-		cookies.delete :uuid
+		reset_session
 		redirect_to '/login'
 	end
 end
