@@ -1,0 +1,38 @@
+<%= form_tag("/logout", method: "post") do %>
+  <%= submit_tag("Log out") %>
+<% end %>
+
+
+<% if @tasks.length == 0 %>
+  <h1>No tasks; enjoy your day off!</h1>
+<% else %>
+  <h1>Tasks remaining:</h1>
+  <% @tasks.each do |task| %>
+    <% if !task.is_complete %>
+      <h4 style="color: red;"><%= task.description %></h4>
+      <%= form_tag("/tasks/#{task.id}", method: "put") do %>
+        <%= submit_tag("Mark as complete") %>
+      <% end %>
+      <hr>
+    <% end %>
+  <% end %>
+  <h1>Tasks completed:</h1>
+  <% @tasks.each do |task| %>
+    <% if task.is_complete %>
+      <h4 style="color: green;"><%= task.description %></h4>
+      <%= form_tag("/tasks/#{task.id}", method: "put") do %>
+        <%= submit_tag("Mark as incomplete") %>
+      <% end %>
+      <hr>
+    <% end %>
+  <% end %>
+<% end %>
+<!-- <hr> -->
+<h1> Create a task </h1>
+<%= form_tag("/tasks", method: "post") do %>
+  <%= label_tag(:description, "Description") %>
+  <%= text_field_tag(:description) %>
+  <%= label_tag(:due_date, "Due Date") %>
+  <%= text_field_tag(:due_date) %>
+  <%= submit_tag("Create Task") %>
+<% end %>

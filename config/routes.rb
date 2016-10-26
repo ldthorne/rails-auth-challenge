@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  root to: 'task#index'
+
+  post '/login', to: 'login#create'
+  get '/login', to: 'login#index'
+  post '/logout', to: 'login#destroy'
+
+  get '/signup', to: 'signup#index'
+  post '/signup', to: 'signup#create'
+
+  get '/', to: 'task#index'
+  post '/tasks', to: 'task#create'
+  put '/tasks/:id', to: 'task#update'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
