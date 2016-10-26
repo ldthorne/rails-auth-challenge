@@ -1,0 +1,9 @@
+<%= form_tag("/signup", method: "post") do %>
+  <%= label_tag(:email, "Email") %>
+  <%= text_field_tag(:email) %>
+  <%= label_tag(:password, "Password") %>
+  <%= password_field_tag(:password) %>
+  <%= submit_tag("Create Account") %>
+<% end %>
+
+<h3> Or, <a href="/login">sign in</a>.</h3>
