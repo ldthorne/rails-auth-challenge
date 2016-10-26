@@ -1,12 +1,11 @@
-require 'bcrypt'
 class LoginController < ApplicationController
 	def index
 	end
 
 	def create
-		user = User.find_by email: params[:email]
+		user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
 
-		if user && user.valid_password?(params[:password])
+		if user
 			session[:uuid] = user.uuid
 			session[:email] = user.email
 			redirect_to '/'
